@@ -300,9 +300,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <!-- onload function -->
 <script>
-    var perGramPrice = parseFloat(document.getElementById("prod-price").innerText);
-    var packageQuantity = parseFloat(document.getElementById("quantity").value);
-    document.getElementById("package-price").innerText = ''+(perGramPrice * packageQuantity);
     $('#slider-1-data .slider-selection').css('background', 'rgb(239,130,71)');
     $('#slider-2-data .slider-selection').css('background', 'rgb(239,130,71)');
     $('#slider-3-data .slider-selection').css('background', 'rgb(239,130,71)');
@@ -310,7 +307,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     var prodId = localStorage.getItem("prodId");
     var prodDescription = localStorage.getItem("prodDescription");
     var prodPrice = localStorage.getItem("prodPrice");
-    console.log(prodName);console.log(prodId);console.log(prodDescription);console.log(prodPrice);
+//    console.log(prodName);console.log(prodId);console.log(prodDescription);console.log(prodPrice);
+    document.getElementById("prod-name").innerText = prodName;
+    document.getElementById("prod-price").innerText = prodPrice;
+    var perGramPrice = parseFloat(document.getElementById("prod-price").innerText);
+    var packageQuantity = parseFloat(document.getElementById("quantity").value);
+    document.getElementById("package-price").innerText = ''+(perGramPrice * packageQuantity);
 </script>
 <!-- //onload function -->
 
