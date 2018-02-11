@@ -14,7 +14,25 @@ function getCartData(){
     cartBtn.setAttribute("data-quantity","1");
     var prodImage = document.getElementById("single-image-1").getAttribute("data-thumb");
     cartBtn.setAttribute("data-image",prodImage);
+    var prodId = document.getElementById("code").innerText;
+    console.log("prodId from custom-mycart :   "+prodId);
+    cartBtn.setAttribute("data-id",prodId);
+    // reloadAddToCartButton();
     // alert(prodQuantity);
+}
+
+function reloadAddToCartButton(){
+    var elem = document.getElementById('add-to-cart');
+    elem.parentNode.removeChild(elem);
+    var btn = document.createElement("button");
+    btn.classList.add("btn");
+    btn.classList.add("my-cart-btn");
+    btn.classList.add("snipcart-details");
+    btn.classList.add("hvr-outline-out");
+    var parent = document.getElementById("add-to-cart-holder");
+    parent.appendChild(btn);
+    btn.setAttribute("id", "add-to-cart");
+    btn.onclick=getCartData();
 }
 
 $(function () {

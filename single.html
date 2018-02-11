@@ -1,13 +1,7 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Elite Shoppy an Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template |Men's :: w3layouts</title>
+    <title>TeaWebsite | Single</title>
     <!--/tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -35,22 +29,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <!--/single_page-->
        <!-- /banner_bottom_agile_info -->
-<div class="page-head_agile_info_w3l">
-		<div class="container">
-			<h3>Single <span>Page </span></h3>
-			<!--/w3_short-->
-				 <div class="services-breadcrumb">
-						<div class="agile_inner_breadcrumb">
+<!--<div class="page-head_agile_info_w3l">-->
+		<!--<div class="container">-->
+			<!--<h3>Single <span>Page </span></h3>-->
+			<!--&lt;!&ndash;/w3_short&ndash;&gt;-->
+				 <!--<div class="services-breadcrumb">-->
+						<!--<div class="agile_inner_breadcrumb">-->
 
-						   <ul class="w3_short">
-								<li><a href="index.html">Home</a><i>|</i></li>
-								<li>Single Page</li>
-							</ul>
-						 </div>
-				</div>
-	   <!--//w3_short-->
-	</div>
-</div>
+						   <!--<ul class="w3_short">-->
+								<!--<li><a href="index.html">Home</a><i>|</i></li>-->
+								<!--<li>Single Page</li>-->
+							<!--</ul>-->
+						 <!--</div>-->
+				<!--</div>-->
+	   <!--&lt;!&ndash;//w3_short&ndash;&gt;-->
+	<!--</div>-->
+<!--</div>-->
 
   <!-- banner-bootom-w3-agileits -->
 <div class="banner-bootom-w3-agileits">
@@ -76,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="col-md-8 single-right-left simpleCart_shelfItem">
 					<h3 id="prod-name">CTC Product A</h3>
-					<p><span class="item_price">Rs <span id="prod-price">5</span> per gram</span></p>
+					<p><span class="item_price">&#x20B9;<span id="prod-price">5</span> per gram</span></p>
 
 					<div class="description">
                         <p>
@@ -149,7 +143,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="col-md-3">
                             <label>Quantity</label>
                             <br/>
-                            <select id="quantity" onchange="updatePackagePrice();" class="frm-field required sect">
+                            <select id="quantity" onchange="updatePackagePrice();generateCode();" class="frm-field required sect">
                                 <option value="10">10 grams</option>
                                 <option value="20">20 grams</option>
                                 <option value="30">30 grams</option>
@@ -163,21 +157,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="col-md-3">
                             <label>Package Price</label>
                             <br/>
-                            <span id="package-price" class=""></span>
+                            &#x20B9;<span id="package-price" class=""></span>
                         </div>
                         <div class="col-md-3">
                             <label>Blend Code</label>
                             <br/>
-                            <span id="code" class="code">ASS333</span>
+                            <span id="code" class="code">ASS33310</span>
                         </div>
                     </div>
                     <br/>
                     <div class="row">
-                        <div class="col-md-12">
-                            <button class="btn my-cart-btn snipcart-details hvr-outline-out" data-id="8"
+                        <div class="col-md-12" id="add-to-cart-holder">
+                            <button class="btn my-cart-btn snipcart-details hvr-outline-out" data-id="81"
                                     data-name="Black Casual Top" data-summary="summary 1"
                                     data-price="7.85" data-quantity="2" data-image="images/Upper_Cas_8_front.jpg"
-                                    id="add-to-cart" onclick="getCartData();">
+                                    id="add-to-cart">
                                 ADD TO CART
                             </button>
                         </div>
@@ -308,7 +302,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script>
     var perGramPrice = parseFloat(document.getElementById("prod-price").innerText);
     var packageQuantity = parseFloat(document.getElementById("quantity").value);
-    document.getElementById("package-price").innerText = 'Rs. '+(perGramPrice * packageQuantity);
+    document.getElementById("package-price").innerText = ''+(perGramPrice * packageQuantity);
 </script>
 <!-- //onload function -->
 
@@ -317,7 +311,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     function updatePackagePrice() {
         var perGramPrice = parseFloat(document.getElementById("prod-price").innerText);
         var packageQuantity = parseFloat(document.getElementById("quantity").value);
-        document.getElementById("package-price").innerText = 'Rs. '+(perGramPrice * packageQuantity);
+        document.getElementById("package-price").innerText = ''+(perGramPrice * packageQuantity);
     }
 </script>
 <!-- //update package price -->

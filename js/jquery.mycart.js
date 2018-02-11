@@ -105,7 +105,9 @@
         return [];
       }
     }
+
     var updatePoduct = function(id, quantity) {
+        console.log("prodId from updateProduct :   "+id);
       var productIndex = getIndexOfProduct(id);
       if(productIndex < 0){
         return false;
@@ -115,7 +117,9 @@
       setAllProducts(products);
       return true;
     }
+
     var setProduct = function(id, name, summary, price, quantity, image) {
+        console.log("prodId from setProduct :   "+id);
       if(typeof id === "undefined"){
         console.error("id required")
         return false;
@@ -217,8 +221,8 @@
         '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
         '<h4 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-shopping-cart"></span> My Cart</h4>' +
         '</div>' +
-        '<div class="modal-body">' +
-        '<table class="table table-hover table-responsive" id="' + idCartTable + '"></table>' +
+        '<div class="modal-body" id="' + idCartTable + '">' +
+        // '<table class="table table-hover table-responsive" id="' + idCartTable + '"></table>' +
         '</div>' +
         '<div class="modal-footer">' +
         '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
@@ -239,14 +243,14 @@
         var total = this.quantity * this.price;
 
         $cartTable.append(
-          '<tr title="' + this.summary + '" data-id="' + this.id + '" data-price="' + this.price + '">' +
-          '<td class="text-center" style="width: 30px;"><img width="30px" height="30px" src="' + this.image + '"/></td>' +
-          '<td>' + this.name + '</td>' +
-          '<td title="Unit Price">' + options.currencySymbol + MathHelper.getRoundedNumber(this.price) + '</td>' +
-          '<td title="Quantity"><input type="number" min="1" style="width: 40px;" class="' + classProductQuantity + '" value="' + this.quantity + '"/></td>' +
-          '<td title="Total" style="width: 40px;"> <span class="' + classProductTotal + '">' + MathHelper.getRoundedNumber(total) + '</span></td>' +
-          '<td title="Remove from Cart" class="text-left" style="width: 30px;"><a href="javascript:void(0);" class="btn btn-xs btn-danger ' + classProductRemove + '">X</a></td>' +
-          '</tr>'
+          // '<tr title="' + this.summary + '" data-id="' + this.id + '" data-price="' + this.price + '">' +
+          // '<td class="text-center" style="width: 30px;"><img width="30px" height="30px" src="' + this.image + '"/></td>' +
+          // '<td>' + this.name + '</td>' +
+          // '<td title="Unit Price">' + options.currencySymbol + MathHelper.getRoundedNumber(this.price) + '</td>' +
+          // '<td title="Quantity"><input type="number" min="1" style="width: 40px;" class="' + classProductQuantity + '" value="' + this.quantity + '"/></td>' +
+          // '<td title="Total" style="width: 40px;">'+options.currencySymbol+'<span class="' + classProductTotal + '">' + MathHelper.getRoundedNumber(total) + '</span></td>' +
+          // '<td title="Remove from Cart" class="text-left" style="width: 30px;"><a href="javascript:void(0);" class="btn btn-xs btn-danger ' + classProductRemove + '">X</a></td>' +
+          // '</tr>'
 
             // '<div class="row">' +
             //     '<div class="col-md-1">' +
@@ -254,35 +258,48 @@
             //     '</div>' +
             // '</div>'
 
-          //   '<div class="row">' +
-          //       '<div class="col-md-1">' +
-          //           '<span class="text-left"><img width="30px" height="30px" src="' + this.image +'"/></span>' +
-          //       '</div>' +
-          //       '<div class="col-md-5">' +
-          //           '<span class="text-center">'+this.name+'</span>' +
-          //       '</div>' +
-          //       '<div class="col-md-1">' +
-          //           '<span class="text-left">'+ options.currencySymbol + MathHelper.getRoundedNumber(this.price) +'</span>' +
-          //       '</div>' +
-          //       '<div class="col-md-1">' +
-          //           '<span class="text-center"><input type="number" style="width: 40px;" min="1" style="" class="' + classProductQuantity + '" value="' + this.quantity + '"/></span>'+
-          //       '</div>' +
-          //       '<div class="col-md-3">' +
-          //           '<span class="text-right">'+ options.currencySymbol  + MathHelper.getRoundedNumber(total) + '</span>' +
-          //       '</div>' +
-          //   '</div>'
+            '<div class="row" id="'+this.id+'">' +
+                '<div class="col-md-1">' +
+                    '<span class="text-left"><img width="30px" height="30px" src="' + this.image +'"/></span>' +
+                '</div>' +
+                '<div class="col-md-4">' +
+                    '<span class="text-center">'+this.name+'</span>' +
+                '</div>' +
+                '<div class="col-md-2">' +
+                    '<span class="text-left">'+ options.currencySymbol + MathHelper.getRoundedNumber(this.price) +'</span>' +
+                '</div>' +
+                '<div class="col-md-1 text-center">' +
+                    // '<input type="number" style="width: 40px;" min="1" style="" class="' + classProductQuantity + '" value="' + this.quantity + '"/>'+
+                    '<span class="'+classProductQuantity+'">'+this.quantity+'</span>'+
+                '</div>' +
+                '<div class="col-md-3">' +
+                    options.currencySymbol  + '<span class="text-center" id="total-'+this.id+'">'+  MathHelper.getRoundedNumber(total) + '</span>' +
+                '</div>' +
+                '<div class="col-md-1">' +
+                    '<a href="javascript:void(0);" class="btn btn-xs btn-danger ' + classProductRemove + ' ' + this.id + '">X</a>' +
+                '</div>' +
+            '</div>'
         );
       });
 
       $cartTable.append(products.length ?
-        '<tr>' +
-        '<td></td>' +
-        '<td><strong>Total</strong></td>' +
-        '<td></td>' +
-        '<td></td>' +
-        '<td><strong>'+options.currencySymbol+'<span id="' + idGrandTotal + '"></span></strong></td>' +
-        '<td></td>' +
-        '</tr>'
+          '<div class="row" id="grandTotalHolder">' +
+            '<div class="col-md-10 text-center">' +
+                '<strong>Total</strong>'+
+            '</div>' +
+            '<div class="col-md-2">' +
+                '<strong>'+options.currencySymbol+'<span id="' + idGrandTotal + '"></span></strong>'+
+            '</div>' +
+          '</div>'
+        // '<tr>' +
+        // '<td></td>' +
+        // '<td><strong>Total</strong></td>' +
+        // '<td></td>' +
+        // '<td></td>' +
+        // '<td><strong>'+options.currencySymbol+'<span id="' + idGrandTotal + '"></span></strong></td>' +
+        // '<td></td>' +
+        // '</tr>'
+
         : '<div class="alert alert-danger" role="alert" id="' + idEmptyCartMessage + '">Your cart is empty</div>'
       );
 
@@ -356,13 +373,35 @@
     });
 
     $(document).on('click', "." + classProductRemove, function(){
-      var $tr = $(this).closest("tr");
-      var id = $tr.data("id");
-      $tr.hide(500, function(){
+      // var $tr = $(this).closest("tr");
+      // var id = $tr.data("id");
+      // $tr.hide(500, function(){
+      //   ProductManager.removeProduct(id);
+      //   drawTable();
+      //   $cartBadge.text(ProductManager.getTotalQuantity());
+      // });
+
+        //get the id to be removed
+        var el_classList = $(this).attr('class').split(" ");
+        var id = el_classList[el_classList.length-1];
+        // update grand total
+        var grandTotal = parseFloat(document.getElementById(idGrandTotal).innerText);
+        var removedQTotal = document.getElementById("total-"+id).innerText.replace(options.currencySymbol,"");
+        var newGrandTotal = grandTotal - removedQTotal;
+        document.getElementById(idGrandTotal).innerText = ''+newGrandTotal;
+        // remove element row
+        console.log('prodId from remoeve item : ' + id);
         ProductManager.removeProduct(id);
-        drawTable();
+        document.getElementById(idCartTable).removeChild(document.getElementById(id));
+        // update cart badge
         $cartBadge.text(ProductManager.getTotalQuantity());
-      });
+        //check if cart is empty and handle appropiately
+        if (ProductManager.getAllProducts().length === 0){
+            document.getElementById(idCartTable).removeChild(document.getElementById("grandTotalHolder"));
+            $("#" + idCartTable).append(
+                '<div class="alert alert-danger" role="alert" id="' + idEmptyCartMessage + '">Your cart is empty</div>'
+            );
+        }
     });
 
     $(document).on('click', "." + classCheckoutCart, function(){
@@ -381,15 +420,26 @@
     $(document).on('click', targetSelector, function(){
       var $target = $(this);
       options.clickOnAddToCart($target);
-
-      var id = $target.data('id');
-      var name = $target.data('name');
-      var summary = $target.data('summary');
-      var price = $target.data('price');
-      var quantity = $target.data('quantity');
-      var image = $target.data('image');
-
-      ProductManager.setProduct(id, name, summary, price, quantity, image);
+      // var id = $target.data('id');
+      // var name = $target.data('name');
+      // var summary = $target.data('summary');
+      // var price = $target.data('price');
+      // var quantity = $target.data('quantity');
+      // var image = $target.data('image');
+        // CHANGES START
+        var prodName = document.getElementById("prod-name").innerText;
+        var codeName = document.getElementById("code").innerText;
+        var prodQuantity = document.getElementById("quantity").value;
+        prodName = prodName+"<br/>"+prodQuantity+" grams<br/> ("+codeName+")";
+        var prodPrice = document.getElementById("package-price").innerText.replace("Rs. ","");
+        var prodImage = document.getElementById("single-image-1").getAttribute("data-thumb");
+        var prodId = document.getElementById("code").innerText;
+        console.log("prodId from onclick :   "+prodId);
+        // ---CHANGES END
+      // ProductManager.setProduct(id, name, summary, price, quantity, image);
+        // CHANGES START
+        ProductManager.setProduct(prodId, prodName, "", prodPrice, "1", prodImage);
+        // ---CHANGES END
       $cartBadge.text(ProductManager.getTotalQuantity());
 
       options.afterAddOnCart(ProductManager.getAllProducts(), ProductManager.getTotalPrice(), ProductManager.getTotalQuantity());
@@ -399,6 +449,7 @@
 
 
   $.fn.myCart = function (userOptions) {
+      console.log("xxxxxx   ");console.log(this.selector);
     OptionManager.loadOptions(userOptions);
     loadMyCartEvent(this.selector);
     return this;
