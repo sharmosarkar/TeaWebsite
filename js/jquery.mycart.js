@@ -268,7 +268,7 @@
                 '<div class="col-md-2">' +
                     '<span class="text-left">'+ options.currencySymbol + MathHelper.getRoundedNumber(this.price) +'</span>' +
                 '</div>' +
-                '<div class="col-md-1 text-center">' +
+                '<div class="col-md-1 text-left">' +
                     // '<input type="number" style="width: 40px;" min="1" style="" class="' + classProductQuantity + '" value="' + this.quantity + '"/>'+
                     '<span class="'+classProductQuantity+'">'+this.quantity+'</span>'+
                 '</div>' +
@@ -278,16 +278,17 @@
                 '<div class="col-md-1">' +
                     '<a href="javascript:void(0);" class="btn btn-xs btn-danger ' + classProductRemove + ' ' + this.id + '">X</a>' +
                 '</div>' +
-            '</div>'
+            '</div>'+
+            '<br/>'
         );
       });
 
       $cartTable.append(products.length ?
           '<div class="row" id="grandTotalHolder">' +
-            '<div class="col-md-10 text-center">' +
+            '<div class="col-md-8 text-center">' +
                 '<strong>Total</strong>'+
             '</div>' +
-            '<div class="col-md-2">' +
+            '<div class="col-md-4">' +
                 '<strong>'+options.currencySymbol+'<span id="' + idGrandTotal + '"></span></strong>'+
             '</div>' +
           '</div>'
