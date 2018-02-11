@@ -24,8 +24,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 html, body{
 	margin:0;
 	font-size: 100%;
-	background: #fff;
+	/*background: #fffc34;*/
 	font-family: 'Open Sans', sans-serif;
+    background:url(../images/background.jpg);
 }
 body a {
 	text-decoration:none;
@@ -1483,6 +1484,7 @@ button.w3view-cart {
     position: relative;
     box-shadow: 0px 0px 15px 0px #D6D6D6;
     padding-bottom: 20px;
+    background-color: #ffb90a;
 }
 .men-thumb-item {
     position: relative;
@@ -4311,6 +4313,7 @@ p.w3ls_para {
 	.header-bot_inner_wthreeinfo_header_mid {
 		margin: 0 auto;
 		width: 96%;
+
 	}
 	ul.dropdown-menu.multi-column.columns-3 {
 		    border-top: 1px solid rgba(255, 255, 255, 0.09);
@@ -5603,3 +5606,9 @@ p.w3ls_para {
     font-weight: 600;
 }
 /** -- //Login Button --*/
+
+/** -- index-category-container --*/
+.index-category-container{
+    background-image: url('/images/ab_pic.jpg');
+}
+/** -- index-category-container --*/
