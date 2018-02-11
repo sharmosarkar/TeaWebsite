@@ -5582,5 +5582,24 @@ p.w3ls_para {
     font-weight:800;
     font-size: 25px;
 }
-
 /** -- //Combination code --*/
+
+/** -- Login Button -- */
+.login-btn {
+    text-align: center;
+    margin:0.5em auto 1em;
+    font-size: 13px;
+    color: #fff !important;
+    background: #2fdab8;
+    text-decoration: none;
+    position: relative;
+    border: none;
+    border-radius: 0;
+    width: 150%;
+    text-transform: uppercase;
+    padding: .5em 0;
+    outline: none;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+/** -- //Login Button --*/
